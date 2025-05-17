@@ -1,6 +1,6 @@
 # Noodlens, My facial Recognition App
 
-[![fr](https://img.shields.io/badge/lang-fr-yellow)](https://github.com/Da-Spaghetti-Student/NoodleLens/blob/main/README.md)
+[![fr](https://img.shields.io/badge/lang-fr-yellow)](https://github.com/Da-Spaghetti-Student/NoodleLens/blob/main/Readmefr.md)
 
 ## Description
 My Project is a simple web application truning on flask that allows users to upload an image. It will then use a CNN model to recognise a face and a human emotion in the image. 
