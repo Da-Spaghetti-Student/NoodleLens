@@ -4,7 +4,7 @@
 ![py](https://img.shields.io/badge/python-3.11.2-3C79AB)
 
 ## Description
-Mon projet est une simple application web tronçonnant sur flacon qui permet aux utilisateurs de télécharger une image. Il utilisera ensuite un modèle CNN pour reconnaître un visage et une émotion humaine dans l’image. 
+Mon projet est une simple application web tournant sur Flask qui permet aux utilisateurs de télécharger une image. Il utilisera ensuite un modèle CNN pour reconnaître un visage et une émotion humaine dans l’image. 
 
 Il comprend actuellement 7 émotions :
 - Fâché
