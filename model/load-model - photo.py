@@ -11,7 +11,7 @@ print("""
  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/ 
                                                                                  
       
-Chargement du modèle...
+Loading...
 """)
 
 import warnings
@@ -28,20 +28,19 @@ from keras import models
 model = models.load_model("model.h5", compile = False)
 
 emotions = {
-    0: "Colere",
-    1: "Degout",
-    2: "Peur",
-    3: "Bonheur",
+    0: "Fâché",
+    1: "Dégoûté",
+    2: "Effrayé",
+    3: "Heureux",
     4: "Triste",
     5: "Surpris",
     6: "Neutre",
 }
 
 def detect_faces(image_path):
-    #Pour éviter les erreurs de paths.
+    # Get image path
     image_path = os.path.dirname(os.path.realpath(__file__)) +"\\"+image_path
     
-    # Importation du classeur de detection de visage d'opencv.
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     
     img = cv2.imread(image_path)
@@ -49,28 +48,28 @@ def detect_faces(image_path):
         print("Erreur: Impossible de lire l'image.")
         return
 
-    # convertir en échelle de gris
+    # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # détecter le visage
+    # Detect face(s)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-    # dessiner un rectangle sur le visage
+    # Draw a rectangle on face(s)
     for x, y, w, h in faces:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 140, 0), 2)
         face = gray[y : y + h, x : x + w]
         face = numpy.expand_dims(numpy.expand_dims(cv2.resize(face, (48, 48)), -1), 0)
 
-        # prédire l'émotion
+        # Predict emotions
         emotion_prediction = model(face)
         maxindex = int(numpy.argmax(emotion_prediction))
         cv2.putText(
             img, emotions[maxindex], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 236, 0), 2
         )
-    # Affichage de l'image.
+    # Display image
     cv2.imshow('Detected Faces', img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-# Le nom et l'extention du fichier.
+# The file's name and extension
 detect_faces("Obama.jpg")
