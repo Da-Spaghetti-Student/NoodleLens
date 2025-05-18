@@ -1,6 +1,7 @@
 # Noodlens, Mon application de reconnaissance faciale
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Da-Spaghetti-Student/NoodleLens/blob/main/README.md)
+![py](https://img.shields.io/badge/python-3.11.2-3C79AB)
 
 ## Description
 Mon projet est une simple application web tronçonnant sur flacon qui permet aux utilisateurs de télécharger une image. Il utilisera ensuite un modèle CNN pour reconnaître un visage et une émotion humaine dans l’image. 
