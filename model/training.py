@@ -7,23 +7,23 @@ import keras.optimizers
 import numpy, pandas, keras, cv2
 from sklearn.model_selection import train_test_split
 
-# Recuperation des images(dataset)
+# Get dataset images
 file_path = os.path.dirname(os.path.realpath(__file__)) + "\\fer2013.csv"
 data = pandas.read_csv(file_path)
 pixels = data["pixels"].tolist()
 
-# Initialisation de la largeur et de la hauteur des images
+# Initialis image's width and height
 width, height = 48, 48
 faces = []
 
-# redimensionner les images
+# Resize the images
 for pixel_sequence in pixels:
     face = [int(pixel) for pixel in pixel_sequence.split(" ")]
     face = numpy.asarray(face).reshape(width, height)
     face = cv2.resize(face.astype("uint8"), (width, height))
     faces.append(face.astype("float32"))
 
-# convertir la liste en tableau numpy
+# convert the list to a numpy array
 faces = numpy.asarray(faces)
 faces = numpy.expand_dims(faces, -1)
 emotions = pandas.get_dummies(data["emotion"]).to_numpy()
@@ -33,19 +33,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 model = keras.Sequential()
-# Exclusif au CNN:
-#   Conv2D -> Utilise les kernels
-#   MaxPooling2D -> Simplifie les valeurs récupérer par les kernels
-#   Dropout -> Reduit l'overfitting
 
-# activation Layer:
-#   relu -> ne permet pas d'avoir des nombres négatifs
-#   softmax -> determine le nombre de couches
-
-# Présent dans tout les ANN:
-#   Dense -> Connecte les nodes(neurones) entre eux
-#   Flatten -> Transforme les valeurs récupérée par pooling en 1 dimension car, + facile à manipuler
-
+#The CNN model
 
 model.add(
     keras.layers.Conv2D(
@@ -67,7 +56,7 @@ model.add(keras.layers.Dense(1024, activation="relu"))
 model.add(keras.layers.Dropout(0.5))
 model.add(keras.layers.Dense(7, activation="softmax"))
 
-# Compilation du modèle
+# Model compilation
 model.compile(
     loss="categorical_crossentropy",
     optimizer=keras.optimizers.Nadam(learning_rate=0.0001, decay=1e-7),
@@ -82,5 +71,5 @@ model.fit(
     shuffle=True,
 )
 
-# Sauvegarde du modèle
+# To save the model
 model.save("model.h5")
