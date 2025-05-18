@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoodleLens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <script src="{{ url_for('static', filename='upload.js') }}"></script>
+</head>
+<body>
+    <h1>Bienvenue sur Flask</h1>
+      
+    <form action="http://127.0.0.1:5000/uploader" method="POST" enctype="multipart/form-data"> 
+        <input type='file' name='file' onchange="readURL(this);" required/> 
+        <button type="submit">Submit & predict</button> 
+  
+    </form> 
+</body>
+</html>
