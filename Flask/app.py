@@ -49,7 +49,7 @@ def finds():
     model = models.load_model("model.h5", compile = False)
 
    #The model's emotions
-    vals = {0: "Colere",1: "Degout",2: "Peur",3: "Bonheur",4: "Triste",5: "Surpris",6: "Neutre",}
+    vals = {0: "Fâché",1: "Dégoûté",2: "Effrayé",3: "Heureux",4: "Triste",5: "Surpris",6: "Neutre",}
     
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
