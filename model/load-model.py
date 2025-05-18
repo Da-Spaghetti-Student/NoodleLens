@@ -11,7 +11,7 @@ print("""
  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/ 
                                                                                  
       
-Chargement du modèle...
+Loading...
 """)
 
 import warnings
@@ -28,39 +28,39 @@ from keras import models
 model = models.load_model("model.h5", compile = False)
 
 emotions = {
-    0: "Colere",
-    1: "Degout",
-    2: "Peur",
-    3: "Bonheur",
+    0: "Fâché",
+    1: "Dégoûté",
+    2: "Effrayé",
+    3: "Heureux",
     4: "Triste",
     5: "Surpris",
     6: "Neutre",
 }
 
-# ouvrir la webcam
+# Open webcam
 video = cv2.VideoCapture(0)
 
 while True:
-    # lire la video image par image
+    # Read the video input frames by frames
     ret, img = video.read()
 
     face_cascade = cv2.CascadeClassifier(
         cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
     )
 
-    # convertir en échelle de gris
+    # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # détecter le visage
+    # Detect faces
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-    # dessiner un rectangle sur le visage
+    # Draw a rectangle on face(s)
     for x, y, w, h in faces:
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 140, 0), 2)
         face = gray[y : y + h, x : x + w]
         face = numpy.expand_dims(numpy.expand_dims(cv2.resize(face, (48, 48)), -1), 0)
 
-        # prédire l'émotion
+        # Predict emotions
         emotion_prediction = model(face)
         maxindex = int(numpy.argmax(emotion_prediction))
         cv2.putText(
