@@ -5,7 +5,7 @@
 
 
 ## Description
-My Project is a simple web application truning on flask that allows users to upload an image. It will then use a CNN model to recognise a face and a human emotion in the image. 
+My Project is a simple web application running on flask that allows users to upload an image. It will then use a CNN model to recognise a face and a human emotion in the image. 
 
 There are currently, there are 7 emotions:
 - Angry
