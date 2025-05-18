@@ -1,7 +1,7 @@
 # Noodlens, My facial Recognition App
 
 [![fr](https://img.shields.io/badge/lang-fr-yellow)](https://github.com/Da-Spaghetti-Student/NoodleLens/blob/main/Readmefr.md)
-[![py](https://img.shields.io/badge/python-3.11.2-3C79AB)]
+![py](https://img.shields.io/badge/python-3.11.2-3C79AB)
 
 
 ## Description
