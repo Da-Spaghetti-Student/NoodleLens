@@ -21,3 +21,6 @@ Il y a aussi un fichier réservé pour l'entrainement du modèle de convolution,
 1. Cloner le repository:
    ```bash
    git clone https://github.com/Da-Spaghetti-Student/NoodleLens.git
+   
+2.Fichiers requis dans la racine de l'application.
+Le fichier "haarcascade_frontalface_default.xml" provenant de opencv et votre fichier "model.h5" doivent être present dans la racine de l'application.
