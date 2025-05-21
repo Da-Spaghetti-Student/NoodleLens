@@ -24,4 +24,5 @@ There is also a training file for the CNN model and two basic py files for real 
    git clone https://github.com/Da-Spaghetti-Student/NoodleLens.git
 
 2.Required files in root
+
 The "haarcascade_frontalface_default.xml" file from opencv and the "model.h5" file need to be put in root.
